@@ -1,1 +1,10 @@
- ls -l
+ls -l
+cd . .
+xyi
+ls
+ls ---l;\
+ls
+cd . .
+cd ..
+rm cd ..
+cd ..
