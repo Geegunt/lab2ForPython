@@ -1,7 +1,6 @@
 import os
 import tempfile
 import tarfile
-import pytest
 from src.commands.tar_cmd import tar_folder, untar_archive
 
 def test_tar_folder():
@@ -11,11 +10,9 @@ def test_tar_folder():
         test_file = os.path.join(src_dir, "test.txt")
         with open(test_file, 'w') as f:
             f.write("test")
-        
         archive = os.path.join(tmpdir, "test.tar.gz")
         tar_folder(src_dir, archive)
         assert os.path.exists(archive)
-        
         with tarfile.open(archive, 'r:gz') as tf:
             assert "source/test.txt" in tf.getnames()
 
@@ -24,16 +21,14 @@ def test_untar_archive(tmp_path):
         test_file = os.path.join(tmpdir, "test.txt")
         with open(test_file, 'w') as f:
             f.write("test")
-        
         archive = os.path.join(tmpdir, "test.tar.gz")
         with tarfile.open(archive, 'w:gz') as tf:
             tf.add(test_file, "test.txt")
-        
         os.remove(test_file)
-        os.chdir(tmpdir)
+        original_dir = os.getcwd()
         try:
+            os.chdir(tmpdir)
             untar_archive(archive)
-            assert os.path.exists("test.txt")
+            assert os.path.exists("test")
         finally:
-            os.chdir(tmp_path)
-
+            os.chdir(original_dir)

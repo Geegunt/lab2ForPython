@@ -9,8 +9,5 @@ from src.commands.tar_cmd import tar_folder, untar_archive
 from src.commands.grep import grep
 from src.commands.undo import undo
 
-__all__ = ['ls', 'cd', 'cat', 'cp', 'mv', 'rm', 'zip_folder', 'unzip_archive', 
+__all__ = ['ls', 'cd', 'cat', 'cp', 'mv', 'rm', 'zip_folder', 'unzip_archive',
            'tar_folder', 'untar_archive', 'grep', 'undo']
-
-
-

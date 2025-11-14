@@ -1,6 +1,5 @@
 import os
 import tempfile
-import pytest
 from src.commands.cd import cd
 
 def test_cd_to_directory(tmp_path):
@@ -25,4 +24,3 @@ def test_cd_up(tmp_path):
     cd("..")
     current = os.getcwd()
     assert os.path.samefile(current, parent_dir)
-

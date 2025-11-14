@@ -2,6 +2,14 @@ import shutil
 from src.logger import log_error
 
 def mv(src, dst):
+    '''Перемещает или переименовывает файл
+
+    Args:
+        src(str)
+        dst(str)
+    Returns:
+        None
+    '''
     try:
         from src.history import add_to_undo_stack
         add_to_undo_stack('mv', src, dst)
@@ -10,6 +18,3 @@ def mv(src, dst):
     except Exception as e:
         print(e)
         log_error(str(e))
-
-
-
